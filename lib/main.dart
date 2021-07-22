@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:calculator_app/widgets/CalcButton.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(CalcApp());
@@ -16,6 +17,33 @@ class CalcApp extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
+            Container(
+              padding: EdgeInsets.only(right: 12.0),
+              child: Text(
+                "69*420",
+                style: GoogleFonts.rubik(
+                  textStyle: TextStyle(
+                    fontSize: 24,
+                    color: Color(0xFF545F61),
+                  ),
+                ),
+              ),
+              alignment: Alignment(1 ,1),
+            ),
+            Container(
+              padding: EdgeInsets.all(12.0),
+              child: Text(
+                "69420",
+                style: GoogleFonts.rubik(
+                  textStyle: TextStyle(
+                    fontSize: 48,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+              alignment: Alignment(1 ,1),
+            ),
+            SizedBox(height: 40),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
