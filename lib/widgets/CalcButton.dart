@@ -6,6 +6,7 @@ class CalcButton extends StatelessWidget {
   final int textColor;
   final int fillColor;
   final double textSize;
+  final Function callback;
 
   const CalcButton({
     Key? key,
@@ -13,6 +14,7 @@ class CalcButton extends StatelessWidget {
     this.textColor = 0xFFFFFFFF,
     required this.fillColor,
     this.textSize = 28.0,
+    required this.callback,
   }) : super(key: key);
 
   @override
@@ -34,7 +36,9 @@ class CalcButton extends StatelessWidget {
               ),
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            callback(text);
+          },
           color: fillColor != null ? Color(fillColor) : null,
           textColor: Color(textColor),
         ),
