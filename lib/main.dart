@@ -7,6 +7,8 @@ void main() {
   runApp(CalcApp());
 }
 
+// Making the CalcApp a Stateful Widget so that it can show
+// the data that it has calculated
 class CalcApp extends StatefulWidget {
   const CalcApp({Key? key}) : super(key: key);
 
@@ -15,8 +17,8 @@ class CalcApp extends StatefulWidget {
 }
 
 class _CalcAppState extends State<CalcApp> {
-  String _history = "";
-  String _expression = "";
+  String _history = ""; // This will store the previous expression
+  String _expression = ""; // This will store the expression being evaluated
 
   void numClick (String text) {
     setState(() {
@@ -42,10 +44,17 @@ class _CalcAppState extends State<CalcApp> {
     Expression exp = p.parse(_expression);
     ContextModel cm = ContextModel();
     double eval = exp.evaluate(EvaluationType.REAL, cm);
+    String temp = eval.toString();
+
+    // Gets last 2 characters from eval and if it is ".0" then removes it
+    var newString = temp.substring((temp.length - 2).clamp(0, temp.length));
+    if(newString == ".0"){
+      temp = temp.substring(0, temp.length - 2);
+    }
 
     setState(() {
       _history = _expression;
-      _expression = eval.toString();
+      _expression = temp;
     });
   }
 
