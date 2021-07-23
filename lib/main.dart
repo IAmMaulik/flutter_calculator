@@ -106,14 +106,13 @@ class _CalcAppState extends State<CalcApp> {
                   callback: allClear,
                 ),
                 CalcButton(
-                  text: "C",
-                  fillColor: 0xFF6C807F,
-                  callback: clear,
+                  text: "(",
+                  fillColor: 0xFF283637,
+                  callback: numClick,
                 ),
                 CalcButton(
-                  text: "%",
-                  fillColor: 0xFFFFFFFF,
-                  textColor: 0xFF65BDAC,
+                  text: ")",
+                  fillColor: 0xFF283637,
                   callback: numClick,
                 ),
                 CalcButton(
