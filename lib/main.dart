@@ -40,18 +40,25 @@ class _CalcAppState extends State<CalcApp> {
   }
 
   void evaluate (String text) {
-    Parser p = Parser();
-    Expression exp = p.parse(_expression);
-    ContextModel cm = ContextModel();
-    double eval = exp.evaluate(EvaluationType.REAL, cm);
-    String temp = eval.toString();
+    late String temp;
 
-    // Gets last 2 characters from eval and if it is ".0" then removes it
-    var newString = temp.substring((temp.length - 2).clamp(0, temp.length));
-    if(newString == ".0"){
-      temp = temp.substring(0, temp.length - 2);
+    // EASTER EGG
+    if(_expression == "/**/00") {
+      temp = "Created by Maulik";
     }
+    else {
+      Parser p = Parser();
+      Expression exp = p.parse(_expression);
+      ContextModel cm = ContextModel();
+      double eval = exp.evaluate(EvaluationType.REAL, cm);
+      temp = eval.toString();
 
+      // Gets last 2 characters from eval and if it is ".0" then removes it
+      var newString = temp.substring((temp.length - 2).clamp(0, temp.length));
+      if (newString == ".0") {
+        temp = temp.substring(0, temp.length - 2);
+      }
+    }
     setState(() {
       _history = _expression;
       _expression = temp;
